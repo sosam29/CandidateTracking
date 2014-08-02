@@ -1,0 +1,128 @@
+package candidatetracking;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+/**
+ * Servlet implementation class TrackApplication
+ */
+@WebServlet(
+		description = "This servlet proccess request to track the candidates", 
+		urlPatterns = { "/TrackApplication" }, 
+		initParams = { 
+				@WebInitParam(name = "dbconnection", value = "", description = "this will be a single db connection")
+		})
+public class TrackApplication extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public TrackApplication() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		  HttpSession ses = request.getSession(true);
+		 
+		  final String JDBC_DRIVER="com.mysql.jdbc.Driver";  
+	      final String DB_URL="jdbc:mysql://localhost:3306/insight4excel";
+
+	      //  Database credentials
+	      final String USER = "root";
+	      final String PASS = "2929";
+	      Connection conn = null;
+	      Statement stmt = null;
+	      String email= request.getParameter("txtemail");
+	      String sqlstr = "select count(*) as num from candidatedetails where email_id="+email;
+	      	      
+	      try{
+	          // Register JDBC driver
+	          Class.forName(JDBC_DRIVER);
+	         
+	           // Open a connection
+	          conn = DriverManager.getConnection(DB_URL,USER,PASS);
+	          stmt= conn.createStatement();
+	         
+	          ResultSet rs= stmt.executeQuery(sqlstr);
+	          //response.getWriter();
+	         
+	        	ses.setAttribute("NumRecord", rs.getLong(1));  
+	        	ServletContext sc = getServletContext();
+	        	RequestDispatcher rd = sc.getRequestDispatcher("/");
+	        	rd.forward(request, response);
+	         	          
+	        //  List<String> colnames = getColumnNames(rs);
+	          
+	          
+	      }catch(SQLException se){
+	          //Handle errors for JDBC
+	          se.printStackTrace();
+	       }catch(Exception e){
+	          //Handle errors for Class.forName
+	          e.printStackTrace();
+	       }finally{
+	          //finally block used to close resources
+	          
+	        	  try {
+	        		  if (conn!= null)
+	    	          {
+					conn.close();
+	    	          }
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	       } //end try	      
+	}// end doPost
+
+	public static List<String> getColumnNames(ResultSet rs) throws SQLException
+	{
+		if(rs==null){return null;}
+		List<String> strarry = new ArrayList<String>();
+		ResultSetMetaData rsmetadata = rs.getMetaData();
+		for (int i = 0; i < rsmetadata.getColumnCount(); i++){
+			strarry.add(rsmetadata.getColumnName(i));
+		}
+		return strarry;
+		
+	}
+}
