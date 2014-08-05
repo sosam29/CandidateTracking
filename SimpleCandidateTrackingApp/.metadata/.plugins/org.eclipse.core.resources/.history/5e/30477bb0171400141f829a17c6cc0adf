@@ -1,0 +1,33 @@
+package ebookshop;
+
+public class Book {
+	String title;
+	int quantity;
+	Float price;
+	public Book(String Title, int quantity, Float price) {
+		super();
+		this.title = Title;
+		this.quantity = quantity;
+		this.price = price;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public Float getPrice() {
+		return price;
+	}
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+	
+
+}

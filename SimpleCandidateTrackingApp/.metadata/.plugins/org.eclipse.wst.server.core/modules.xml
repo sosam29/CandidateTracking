@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modules>
+  <module moduleId="org.eclipse.jst.jee.server:ebookshopcart" serverId="Tomcat v7.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:EBookshop" serverId="Tomcat v6.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:StatelessSessionProjectEAR" serverId="GlassFish 4.0 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:GuestBook" serverId="GlassFish 4.0 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:SimpleCandidateTrackingApp" serverId="GlassFish 4.0 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Bookshop" serverId="GlassFish 4.0 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:HiWebService" serverId="GlassFish 4.0 at localhost"/>
+</modules>

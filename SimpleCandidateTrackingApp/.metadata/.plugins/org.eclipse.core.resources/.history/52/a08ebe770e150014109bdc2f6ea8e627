@@ -1,0 +1,16 @@
+package insight.excellence;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookCatalog {
+
+	public List<String> getBook(){
+		List<String> lstbook = new ArrayList<String>();
+		lstbook.add("Let us c");
+		lstbook.add("We are here");
+		lstbook.add("where are you");		
+		return lstbook;
+		
+	}
+}

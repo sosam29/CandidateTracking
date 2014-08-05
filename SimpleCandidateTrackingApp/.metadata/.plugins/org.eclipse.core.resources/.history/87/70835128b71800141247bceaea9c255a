@@ -1,0 +1,115 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  	
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Add new Candidate</title>
+<script type="text/javascript" src="<c:url value="/JS/jquery-1.11.1.min.js"/>">
+    $(document).ready(function() {
+      $('.form_error').hide();
+      $('#submit').click(function(){
+           var name = $('#txtname').val();
+           var email = $('#txemail').val();
+           var phone = $('#txtphone').val();
+           var message = $('#message').val();
+           if(name== ''){
+              $('#txtname').next().show();
+              return false;
+            }
+            if(email== ''){
+               $('#txtemail').next().show();
+               return false;
+            }
+            if(IsEmail(email)==false){
+                $('#invalid_email').show();
+                return false;
+            }
+
+            if(phone== ''){
+                $('#txtphone').next().show();
+                return false;
+            }
+            if(message== ''){
+                $('#message').next().show();
+                return false;
+            }
+            //ajax call php page
+            $.post("savecandidate.jsp", $("#AddCandidate").serialize(),  function(response) {
+            $('#AddCandidate').fadeOut('slow',function(){
+                $('#success').html(response);
+                $('#success').fadeIn('slow');
+               });
+             });
+             return false;
+          });
+      });
+      function IsEmail(email) {
+        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if(!regex.test(email)) {
+           return false;
+        }else{
+           return true;
+        }
+      }
+      </script>
+</head>
+<body>
+<!-- 	<form name="save" action="savecandidate.jsp" method="POST"> 
+	<td><label for="txtname">Name :</label></td>
+	Name: <input type="text" name="txtname"></input><p/>
+	Email:<input type="text" name="txtemail" ></input><p/>
+	Address: <input type="text" name="txtaddress"></input><p/>
+	<!-- City: <input type="text" name="txtcity"></input> <p/>
+	State: <input type="text" name="txtstate"></input> <p/>
+	Zip: <input type="text" name="txtzip"></input><p/> 
+	Phone: <input type="text" name="txtphone"></input> <p/>
+	<input type=submit value="Add New Candidate">
+	<input type="reset" class="contactform-buttons" id="" value="Clear" />
+	 </form> --> 
+	<form action="" method="post" id="AddCandidate">
+		<table class="contact-table">
+			<tr>
+				<td><label for="txtname">Name :</label></td>
+				<td class="name"><input name="txtname" id="name" type="text"
+					 class="contact-input"><span
+					class="form_error">Please enter your name</span></td>
+			</tr>
+			<tr>
+				<td><label for="txtemail">Email :</label></td>
+				<td class="email"><input name="txtemail" id="email" type="text"
+					class="contact-input"><span
+					class="form_error">Please enter your email</span> <span
+					class="form_error" id="invalid_email">This email is not
+						valid</span></td>
+			</tr>
+			<tr>
+				<td><label for="txtphone">Phone :</label></td>
+				<td class="phone"><input name="txtphone" id="phone" type="text"
+					class="contact-input"><span
+					class="form_error">Please enter your phone</span></td>
+			</tr>
+			<tr>
+				<td><label for="txtaddress">Address :</label></td>
+				<td class="message"><textarea name="txtaddress" id="address"
+						class="contact-input"></textarea><span class="form_error">Please
+						enter your Address</span></td>
+			</tr>
+			<tr>
+				<td><label for="txtzip">Zip :</label></td>
+				<td class="txtzip"><input name="txtzip" id="zip" type="text"
+					class="contact-input"><span
+					class="form_error">Please enter your zip</span> </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" class="contactform-buttons"
+					id="submit" value="Send" /> 
+					<input type="reset"  class="contactform-buttons" id="" value="Clear" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html> 

@@ -1,0 +1,8 @@
+#GlassFish 3
+#Wed Aug 06 01:37:20 IST 2014
+org.eclipse.jst.jee.server\:Bookshop=/opt/glassfish4/glassfish/domains/domain1/eclipseApps/Bookshop
+org.eclipse.jst.jee.server\:samplehello=/opt/glassfish4/glassfish/domains/domain1/eclipseApps/samplehello
+org.eclipse.jst.jee.server\:StatelessSessionProjectEAR=/opt/glassfish4/glassfish/domains/domain1/eclipseApps/StatelessSessionProjectEAR
+org.eclipse.jst.jee.server\:HiWebService=/opt/glassfish4/glassfish/domains/domain1/eclipseApps/HiWebService
+org.eclipse.jst.jee.server\:SimpleCandidateTrackingApp=/opt/glassfish4/glassfish/domains/domain1/eclipseApps/SimpleCandidateTrackingApp
+org.eclipse.jst.jee.server\:GuestBook=/opt/glassfish4/glassfish/domains/domain1/eclipseApps/GuestBook

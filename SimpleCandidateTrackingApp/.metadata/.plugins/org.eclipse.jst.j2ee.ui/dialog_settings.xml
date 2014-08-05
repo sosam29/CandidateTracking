@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="true" key="J2EE_EXPORT_OVERWRITE"/>
+	<item value="StatelessSessionProjectEAR" key="LASTEARNAME_"/>
+	<item value="true" key="J2EE_EXPORT_SOURCE"/>
+	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="/home/yhwh/Desktop/ebookshopcart.war"/>
+	</list>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="GlassFish 4.0"/>
+		<item value="Apache Tomcat v7.0"/>
+	</list>
+</section>

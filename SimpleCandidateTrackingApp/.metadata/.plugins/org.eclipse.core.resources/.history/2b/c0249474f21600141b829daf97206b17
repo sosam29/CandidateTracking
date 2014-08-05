@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Add new Candidate</title>
+</head>
+<body>
+<form action="POST" value="addcandidate">
+Candidate Name: <input type="text" value="txtname"></input>
+Address: <input type="text" value="txtaddress"></input>
+City: <input type="text" value="txtcity"></input>
+State: <input type="text" value="txtstate"></input>
+Zip: <input type="text" value="txtzip"></input>
+Phone: <input type="text" value="txtphone"></input>
+</form>
+</body>
+</html>

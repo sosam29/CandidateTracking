@@ -1,0 +1,29 @@
+package client;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import example.IStatelessSession;
+
+public class StatelessSessionClient {
+
+	public void runTest() throws Exception
+	{
+		InitialContext ctx = new InitialContext();
+		IStatelessSession  bean = (IStatelessSession) ctx.lookup("ejb/StatelessSession");
+		String result = bean.getMessage();
+		System.out.println(result);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try {
+			StatelessSessionClient test = new 	StatelessSessionClient();
+			test.runTest();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

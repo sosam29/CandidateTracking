@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Validate New User</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<%@ page import="javax.servlet.*" %>
+<%@ page import="javax.servlet.http.*" %>
+<%@ page import="java.sql.*" %>
+
+<%
+	Connection conn = null;
+
+        String name = request.getParameter("txtname");
+        String email = request.getParameter("txtemail");
+        String address = request.getParameter("txtaddress");
+        /*String address2 = request.getParameter("txtaddress2");
+         String city = request.getParameter("txtcity");
+        String state = request.getParameter("txtstate");
+        String zip = request.getParameter("txtzip");
+        String state = request.getParameter("txtstate"); */
+        String phone = request.getParameter("txtphone");
+        String contactname= request.getParameter("txtcontactname");
+        String candidateid = request.getParameter("clientcontact");
+        String clientcontact = request.getParameter("clientcontact");
+        
+        //String queryText ="insert into candidatedetails (\"email_id\",\"name\",\"address\",\"phone\",\"state\", \"city\", \"zip\") values ('"+email+"','"+name+"','"+address+"','"+phone+"','"+state+"','"+city+"','"+zip+"')";  
+
+        try {
+              Class.forName("com.mysql.jdbc.Driver").newInstance ();
+              conn =
+
+DriverManager.getConnection("jdbc:mysql://localhost:3306/insight4excel","root","2929");
+			PreparedStatement st;
+			st = conn.prepareStatement("insert into candidatedetails (email_id,name,address,phone) values (?,?,?,?)");
+			st.setString(1, email);
+			st.setString(2, name);
+			st.setString(3, address);
+			st.setString(4, phone);
+			/* st.setString(5, state);
+			st.setString(6, city);
+			st.setString(7, zip); */
+			//st.setString(1, email);
+			 st.executeUpdate();
+             st.clearParameters(); 
+           // Statement stat = con.prepareStatement(queryText);
+
+           // ResultSet rst = stat.execute(sql)
+
+           /*  rst.close();
+            stat.close(); */
+            conn.close();
+        } catch (Exception e) {e.printStackTrace(); }
+
+        response.sendRedirect("index.jsp");
+%>
+
+
+
+</body>
+</html>

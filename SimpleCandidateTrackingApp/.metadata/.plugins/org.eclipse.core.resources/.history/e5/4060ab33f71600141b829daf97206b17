@@ -1,0 +1,42 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<html>
+<head>
+    <title>Lists all the books</title>
+</head>
+<body>
+<h1>Lists all the books</h1>
+<hr/>
+
+
+Code View: Scroll / Show All
+
+<sql:setDataSource dataSource="jdbc/MySQLDataSource"/>
+<sql:query var="candidates">
+     select * from candidatedetails
+</sql:query>
+
+<table border="1">
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>PhoneNumber</th>
+    </tr>
+    <c:forEach var="row" items="${candidatedetails.rows}">
+        <tr>
+            <td><c:out value="${row.email_id}"/></td>
+            <td><c:out value="${row.name}"/></td>
+            <td><c:out value="${row.address}"/></td>
+            <td><c:out value="${row.phone}"/></td>
+            
+        </tr>
+    </c:forEach>
+</table>
+<hr/>
+<i>Candidates- tracking</i>
+</body>
+</html>
+
+					  

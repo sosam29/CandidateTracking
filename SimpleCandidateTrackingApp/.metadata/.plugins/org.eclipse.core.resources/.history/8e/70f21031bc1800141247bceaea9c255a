@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>Validate New User</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script type="text/javascript" src="/JS/jquery-1.11.1.min.js">
+
+$(function () {
+    // Do stuff to the DOM
+    $('body').append('<p>Hello World!</p>');
+});
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+package example;
+
+public class StatelessSession implements IStatelessSession {
+
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

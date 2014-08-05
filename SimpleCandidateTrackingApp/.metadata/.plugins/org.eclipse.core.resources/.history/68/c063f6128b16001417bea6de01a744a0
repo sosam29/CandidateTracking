@@ -1,0 +1,52 @@
+package GuestBook;
+import java.sql.*;
+
+
+public class beancode {
+
+private String guestname;
+private Date dt = new Date(0 );
+private Connection con = null;
+@SuppressWarnings("unused")
+private ResultSet rs = null;
+private PreparedStatement st = null;
+String url = "jdbc:mysql://localhost:3306/";;
+String db = "insight4excel";
+
+public beancode(){
+try{
+Class.forName("com.mysql.jdbc.Driver");
+Connection con = DriverManager.getConnection(url+db,"root","2929");
+}
+catch(Exception e){
+System.out.println(e.getMessage());
+}
+}
+public void setusername(String userId){
+	guestname = userId;
+}
+
+public String getusername(){
+return (guestname);
+}
+
+/*public void setpassword(Date pass){
+dt = pass;
+}
+
+public Date getpassword(){
+return (dt);
+}
+*/
+public void insert(){
+try{
+String s1="insert into Guest values('"+guestname+"','"+dt+"')";
+st = con.prepareStatement(s1);
+st.executeUpdate();
+st.clearParameters();
+st.close();
+}
+catch(Exception m){
+}
+}
+}

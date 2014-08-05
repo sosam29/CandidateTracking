@@ -1,0 +1,45 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ page import="javax.sql.DataSource" %>
+<html>
+<head>
+    <title>Lists all the Candidates</title>
+</head>
+<body>
+<h1>Lists all the Candidates</h1>
+<hr/>
+
+<sql:setDataSource var="jdbc/MySQLDataSource" driver="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost:3306/insight4excel"
+     user="root"  password="2929"/>
+
+<sql:query var="candidates">
+     select email_id, name, address, phone from candidatedetails
+</sql:query>
+
+<table border="1">
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>PhoneNumber</th>
+    </tr>
+    <c:forEach var="row" items="${candidates.rows}">
+        <tr>
+            <td><c:out value="${row.email_id}"/></td>
+            <td><c:out value="${row.name}"/></td>
+            <td><c:out value="${row.address}"/></td>
+            <td><c:out value="${row.phone}"/></td>
+            
+        </tr>
+    </c:forEach>
+</table>
+<hr/>
+<i>Candidates- tracking</i>
+</body>
+</html>
+
+					  

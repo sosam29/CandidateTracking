@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
-<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1407002800325_0" label="Window Working Set" name="Aggregate for window 1407002800317"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1406307144948_1" label="build Java files" name="build Java files">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ebookshopcart/WebContent/WEB-INF/src/ebookshop" type="2"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1406230355346_0" label="Window Working Set" name="Aggregate for window 1406230355346"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1407139895164_2" label="Window Working Set" name="Aggregate for window 1407002800317"/>
 </workingSetManager>

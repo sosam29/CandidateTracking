@@ -1,4 +1,4 @@
-activeuserprofiles=Insight2;Team
+activeuserprofiles=Insight2;Team;ubuntu
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=yhwh
-useridperkey=Insight2.Local\=yhwh;
+useridperkey=ubuntu.Local\=yhwh;Insight2.Local\=yhwh;
